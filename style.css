@@ -1,0 +1,122 @@
+/* Reset dan layout dasar */
+body {
+  margin: 0;
+  background: #111;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Tombol Love besar */
+.heart {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background: #ff3e73;
+  transform: rotate(-45deg);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: #ff3e73;
+  border-radius: 50%;
+}
+.heart::before {
+  top: -50px;
+  left: 0;
+}
+.heart::after {
+  top: 0;
+  left: 50px;
+}
+.heart.pump {
+  transform: rotate(-45deg) scale(1.2);
+}
+
+/* Teks instruksi atau love */
+#instruction-text {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #ffb6c1;
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+#instruction-text.hide {
+  opacity: 0;
+}
+
+/* Love kecil yang jatuh */
+.falling-heart {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: #ff6f91;
+  transform: rotate(-45deg);
+  border-radius: 50% 50% 0 0;
+  pointer-events: none;
+  animation: fall linear forwards;
+  z-index: 1000;
+}
+.falling-heart::before,
+.falling-heart::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-radius: 50%;
+}
+.falling-heart::before {
+  top: -5px;
+  left: 0;
+}
+.falling-heart::after {
+  top: 0;
+  left: 5px;
+}
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+/* Efek cahaya pink */
+.pink-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: linear-gradient(to bottom,
+    rgba(255,105,180,0.7) 0%,
+    rgba(255,105,180,0.2) 40%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 900;
+  animation: flashDown 0.8s ease-out forwards;
+}
+@keyframes flashDown {
+  0% {
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    height: 100vh;
+    opacity: 0;
+  }
+}
