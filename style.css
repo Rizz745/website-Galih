@@ -1,7 +1,7 @@
 /* Reset dan layout dasar */
 body {
   margin: 0;
-  background: #000; /* full hitam */
+  background: #000; /* hitam pekat */
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ body {
   transform: rotate(-45deg) scale(1.2);
 }
 
-/* Teks instruksi atau love */
+/* Teks instruksi atau ucapan */
 #instruction-text {
   margin-top: 20px;
   font-size: 24px;
@@ -121,16 +121,29 @@ body {
   }
 }
 
-/* Footer By GALIH */
+/* Footer teks "By GALIH" di bawah tengah */
 .footer-text {
   position: fixed;
   bottom: 12px;
-  width: 100%;
-  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 16px;
   color: #ff6f91;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
-  opacity: 0.8;
+  opacity: 0.85;
   pointer-events: none;
+  animation: fadeInUp 2s ease-out;
+}
+
+/* Animasi fade-in dari bawah */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 0.85;
+    transform: translate(-50%, 0);
+  }
 }
